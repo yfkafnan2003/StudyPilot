@@ -1,32 +1,34 @@
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <View style={styles.logoContainer}>
         <Text style={styles.logo}>📚</Text>
-
-        <Text style={styles.title}>StudyPilot</Text>
-
-        <Text style={styles.subtitle}>
-          Your personal AI-powered study companion.
-        </Text>
-
-        <Text style={styles.description}>
-          Organize your study materials, understand difficult topics,
-          generate quizzes, and stay on top of your learning goals.
-        </Text>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.replace('Main')}
-      >
-        <Text style={styles.buttonText}>Get Started →</Text>
-      </TouchableOpacity>
+      <Text style={styles.title}>StudyPilot</Text>
 
-      <Text style={styles.footer}>Learn smarter. Achieve more.</Text>
+      <Text style={styles.heading}>
+        Your personal AI study companion
+      </Text>
+
+      <Text style={styles.description}>
+        Organize your study materials, understand difficult topics,
+        create quizzes, and make learning easier with AI.
+      </Text>
+
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Login')}
+      >
+        <Text style={styles.buttonText}>Get Started</Text>
+      </Pressable>
+
+      <Text style={styles.footer}>
+        Learn smarter. Achieve more.
+      </Text>
     </View>
   );
 }
@@ -35,42 +37,47 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8FAFC',
-    justifyContent: 'space-between',
-    padding: 28,
-    paddingTop: 100,
-    paddingBottom: 35,
-  },
-  content: {
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 70,
+    paddingHorizontal: 30,
   },
-  logo: {
-    fontSize: 75,
+  logoContainer: {
+    width: 110,
+    height: 110,
+    borderRadius: 30,
+    backgroundColor: '#DBEAFE',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 20,
   },
+  logo: {
+    fontSize: 55,
+  },
   title: {
-    fontSize: 36,
+    fontSize: 34,
     fontWeight: 'bold',
     color: '#2563EB',
+    marginBottom: 35,
   },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#1E293B',
+  heading: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#0F172A',
     textAlign: 'center',
-    marginTop: 18,
+    marginBottom: 15,
   },
   description: {
-    fontSize: 15,
+    fontSize: 16,
     color: '#64748B',
     textAlign: 'center',
-    lineHeight: 24,
-    marginTop: 18,
+    lineHeight: 25,
+    marginBottom: 40,
   },
   button: {
     backgroundColor: '#2563EB',
-    padding: 17,
-    borderRadius: 12,
+    width: '100%',
+    paddingVertical: 17,
+    borderRadius: 14,
     alignItems: 'center',
   },
   buttonText: {
@@ -79,7 +86,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   footer: {
-    textAlign: 'center',
+    position: 'absolute',
+    bottom: 35,
     color: '#94A3B8',
     fontSize: 13,
   },
