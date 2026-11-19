@@ -7,11 +7,40 @@ import {
   StyleSheet,
 } from 'react-native';
 
+
 const quickActions = [
-  { title: 'My Subjects', subtitle: 'Organize your subjects', icon: '📚', screen: 'Subjects' },
-  { title: 'AI Assistant', subtitle: 'Ask questions and learn', icon: '🤖', screen: 'Assistant' },
-  { title: 'Study Planner', subtitle: 'Manage your study schedule', icon: '📅', screen: 'Planner' },
+  {
+    title: 'My Subjects',
+    subtitle: 'Organize your subjects',
+    icon: '📚',
+    screen: 'Subjects',
+  },
+  {
+    title: 'AI Assistant',
+    subtitle: 'Ask questions and learn',
+    icon: '🤖',
+    screen: 'Assistant',
+  },
+  {
+    title: 'Study Planner',
+    subtitle: 'Manage your study schedule',
+    icon: '📅',
+    screen: 'Planner',
+  },
+  {
+    title: 'Practice Quiz',
+    subtitle: 'Test your knowledge',
+    icon: '📝',
+    screen: 'Quiz',
+  },
+  {
+    title: 'Flashcards',
+    subtitle: 'Learn through active recall',
+    icon: '🗂️',
+    screen: 'Flashcards',
+  },
 ];
+
 
 export default function DashboardScreen({ navigation }) {
   return (

@@ -1,4 +1,4 @@
-
+import * as DocumentPicker from 'expo-document-picker';
 import { useState } from 'react';
 import {
   View,
@@ -101,7 +101,12 @@ export default function SubjectsScreen() {
         </View>
 
         <Text style={styles.sectionTitle}>Your Materials</Text>
-
+        <Pressable
+          style={styles.uploadButton}
+          onPress={handlePickPDF}
+        >
+          <Text style={styles.uploadButtonText}>📎 Select PDF Document</Text>
+        </Pressable>
         {selectedSubject.materials.length === 0 ? (
           <View style={styles.emptyCard}>
             <Text style={styles.emptyIcon}>📂</Text>
@@ -231,7 +236,63 @@ export default function SubjectsScreen() {
   );
 }
 
+const handlePickPDF = async () => {
+  try {
+    const result = await DocumentPicker.getDocumentAsync({
+      type: 'application/pdf',
+      copyToCacheDirectory: true,
+    });
+
+    if (result.canceled) {
+      return;
+    }
+
+    const file = result.assets[0];
+
+    const material = {
+      id: Date.now().toString(),
+      title: file.name,
+      type: 'PDF Document',
+      icon: '📄',
+      uri: file.uri,
+    };
+
+    setSubjects((previous) =>
+      previous.map((subject) =>
+        subject.id === selectedSubject.id
+          ? {
+              ...subject,
+              materials: [...subject.materials, material],
+            }
+          : subject
+      )
+    );
+
+    setSelectedSubject((previous) => ({
+      ...previous,
+      materials: [...previous.materials, material],
+    }));
+
+    Alert.alert('PDF Added', `${file.name} added successfully.`);
+  } catch (error) {
+    Alert.alert('Upload Error', 'Unable to select this PDF.');
+    console.error(error);
+  }
+};
 const styles = StyleSheet.create({
+  uploadButton: {
+    backgroundColor: '#2563EB',
+    padding: 15,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+
+  uploadButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
   container: {
     flex: 1,
     backgroundColor: '#F8FAFC',
