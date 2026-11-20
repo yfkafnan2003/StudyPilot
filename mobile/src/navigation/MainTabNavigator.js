@@ -7,14 +7,16 @@ import DashboardScreen from '../screens/dashboard/DashboardScreen';
 import SubjectsScreen from '../screens/subjects/SubjectsScreen';
 import AssistantScreen from '../screens/assistant/AssistantScreen';
 import PlannerScreen from '../screens/planner/PlannerScreen';
+import ProfileScreen from '../screens/profile/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
 const tabIcons = {
-  Dashboard: '🏠',
-  Subjects: '📚',
-  Assistant: '🤖',
-  Planner: '📅',
+  Dashboard: 'D',
+  Subjects: 'S',
+  Assistant: 'AI',
+  Planner: 'P',
+  Profile: 'U',
 };
 
 export default function MainTabNavigator() {
@@ -40,7 +42,13 @@ export default function MainTabNavigator() {
             fontWeight: '600',
           },
           tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20, opacity: focused ? 1 : 0.6 }}>
+            <Text
+              style={{
+                fontSize: 15,
+                fontWeight: 'bold',
+                opacity: focused ? 1 : 0.6,
+              }}
+            >
               {tabIcons[route.name]}
             </Text>
           ),
@@ -50,6 +58,7 @@ export default function MainTabNavigator() {
         <Tab.Screen name="Subjects" component={SubjectsScreen} />
         <Tab.Screen name="Assistant" component={AssistantScreen} />
         <Tab.Screen name="Planner" component={PlannerScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </>
   );
