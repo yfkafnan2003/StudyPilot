@@ -36,3 +36,6 @@ venv/
 
 # Test coverage
 coverage/
+
+.env
+.pytest_cache/
