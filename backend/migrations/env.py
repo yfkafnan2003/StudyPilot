@@ -6,7 +6,16 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 
 from app.db.database import Base, settings
-from app.models.user import User
+from app.models import (
+    User,
+    Subject,
+    Document,
+    Quiz,
+    Question,
+    Flashcard,
+    PlannerTask,
+    StudyProgress,
+)
 
 
 config = context.config
