@@ -1,4 +1,3 @@
-
 from sqlalchemy import Column, Integer, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
@@ -13,7 +12,11 @@ class Flashcard(Base):
     front = Column(Text, nullable=False)
     back = Column(Text, nullable=False)
 
-    subject_id = Column(Integer, ForeignKey("subjects.id"), nullable=False)
+    subject_id = Column(
+        Integer,
+        ForeignKey("subjects.id"),
+        nullable=False,
+    )
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 

@@ -1,10 +1,13 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
+from app.api.auth import router as auth_router
 
 app = FastAPI(
     title="StudyPilot API",
     description="Backend API for the StudyPilot AI learning application.",
     version="1.0.0",
 )
+
+app.include_router(auth_router, prefix="/api")
 
 
 @app.get("/")
